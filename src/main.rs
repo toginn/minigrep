@@ -11,7 +11,7 @@ fn main() {
 
     // unwrap_or_elseはエラー時にクロージャを呼び出す
     let config = Config::new(&args).unwrap_or_else(|err| {
-        println!("Problem parsing arguments: {}", err);
+        eprintln!("Problem parsing arguments: {}", err);
         process::exit(1);
     });
 
@@ -21,7 +21,7 @@ fn main() {
 
     // Okの戻り値がないときはunwrapを使わない
     if let Err(e) = minigrep::run(config) {
-        println!("Application error: {}", e);
+        eprintln!("Application error: {}", e);
 
         process::exit(1);
     }
