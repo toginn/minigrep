@@ -6,8 +6,7 @@ fn main() {
     // 引数の解析
     let args: Vec<String> = env::args().collect();
 
-    let query = &args[1];
-    let filename = &args[2];
+    let (query, filename) = parse_config(&args);
 
     // 引数の表示
     println!("Searching for {}", query);
@@ -22,4 +21,11 @@ fn main() {
 
     // ファイルの表示
     println!("With text:\n{}", contents);
+}
+
+fn parse_config(args: &[String]) -> (&str, &str) {
+    let query = &args[1];
+    let filename = &args[2];
+
+    (query, filename)
 }
